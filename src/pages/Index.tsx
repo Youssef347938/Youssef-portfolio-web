@@ -21,41 +21,59 @@ const Index: React.FC = () => {
         const id = target.getAttribute('href')?.substring(1);
         const element = document.getElementById(id || '');
         if (element) {
-          element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
+          // Enhanced smooth scroll with better easing
+          const yOffset = -80; // Adjust this value based on your fixed header height
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          
+          window.scrollTo({
+            top: y,
+            behavior: 'smooth'
           });
         }
       }
     };
 
-    // Add scroll animation
-    const handleScrollAnimation = () => {
+    // Add scroll animation with Intersection Observer for better performance
+    const animateOnScroll = () => {
       const elements = document.querySelectorAll('.animate-on-scroll');
-      const windowHeight = window.innerHeight;
       
-      elements.forEach((element) => {
-        const elementPosition = (element as HTMLElement).getBoundingClientRect().top;
-        if (elementPosition < windowHeight - 100) {
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target); // Stop observing once animated
+            }
+          });
+        }, {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.1
+        });
+        
+        elements.forEach(element => {
+          observer.observe(element);
+        });
+      } else {
+        // Fallback for older browsers
+        elements.forEach(element => {
           element.classList.add('visible');
-        }
-      });
+        });
+      }
     };
 
     // Initialize animations on load
-    handleScrollAnimation();
+    animateOnScroll();
 
     document.addEventListener('click', handleAnchorClick);
-    window.addEventListener('scroll', handleScrollAnimation);
     
     return () => {
       document.removeEventListener('click', handleAnchorClick);
-      window.removeEventListener('scroll', handleScrollAnimation);
     };
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen scroll-smooth">
       <Navbar />
       <Hero />
       <About />

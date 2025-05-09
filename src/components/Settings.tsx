@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Settings as SettingsIcon, X, Globe, Palette } from 'lucide-react';
+import { Settings as SettingsIcon, Globe, Palette } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useColor } from '@/contexts/ColorContext';
 import { Button } from '@/components/ui/button';
@@ -10,7 +10,6 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-  SheetClose
 } from '@/components/ui/sheet';
 import {
   Tabs,
@@ -38,14 +37,7 @@ const Settings: React.FC = () => {
       </SheetTrigger>
       <SheetContent className="w-[300px] sm:w-[400px]">
         <SheetHeader className="mb-6">
-          <SheetTitle className="flex justify-between items-center">
-            {t('settings.title')}
-            <SheetClose asChild>
-              <Button variant="ghost" size="icon">
-                <X className="h-4 w-4" />
-              </Button>
-            </SheetClose>
-          </SheetTitle>
+          <SheetTitle>{t('settings.title')}</SheetTitle>
         </SheetHeader>
         
         <Tabs defaultValue="language">

@@ -11,7 +11,8 @@ import {
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const isRtl = language === 'ar';
 
   const socialLinks = [
     { 
@@ -41,37 +42,39 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="py-10 bg-secondary dark:bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="flex justify-center space-x-6 mb-8">
-            {socialLinks.map((social) => (
-              <Tooltip key={social.name}>
-                <TooltipTrigger asChild>
-                  <a 
-                    href={social.url}
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="bg-card hover:bg-primary hover:text-primary-foreground p-3 rounded-full transition-colors duration-300"
-                    aria-label={social.label}
-                  >
-                    <social.Icon size={20} />
-                  </a>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{social.label}</p>
-                </TooltipContent>
-              </Tooltip>
-            ))}
-          </div>
-          
-          <div className="text-muted-foreground">
-            <p className="mb-2">&copy; {currentYear} Youssef Khalaf. {t('footer.rights')}</p>
-            <p className="text-sm">{t('hero.title')}</p>
+    <TooltipProvider>
+      <footer className="py-10 bg-secondary dark:bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="flex justify-center space-x-6 mb-8">
+              {socialLinks.map((social) => (
+                <Tooltip key={social.name}>
+                  <TooltipTrigger asChild>
+                    <a 
+                      href={social.url}
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="bg-card hover:bg-primary hover:text-primary-foreground p-3 rounded-full transition-colors duration-300"
+                      aria-label={social.label}
+                    >
+                      <social.Icon size={20} />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent dir={isRtl ? "rtl" : "ltr"}>
+                    <p>{social.label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              ))}
+            </div>
+            
+            <div className="text-muted-foreground">
+              <p className="mb-2">&copy; {currentYear} Youssef Khalaf. {t('footer.rights')}</p>
+              <p className="text-sm">{t('hero.title')}</p>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </TooltipProvider>
   );
 };
 

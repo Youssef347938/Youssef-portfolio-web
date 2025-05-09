@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -18,6 +19,9 @@ type FormData = z.infer<typeof formSchema>;
 
 const Contact: React.FC = () => {
   const { toast } = useToast();
+  const { t, language } = useLanguage();
+  const isRtl = language === 'ar';
+  
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -48,21 +52,46 @@ const Contact: React.FC = () => {
       setErrors({});
       setIsSubmitting(true);
       
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Send the email using EmailJS or similar service
+      const formElement = e.target as HTMLFormElement;
+      const formData = new FormData(formElement);
+      formData.append('recipient', 'joelomda583@gmail.com');
       
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for contacting me. I'll get back to you soon.",
-      });
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      });
+      // Example using fetch to a serverless function or email service
+      try {
+        const response = await fetch('https://formspree.io/f/joelomda583@gmail.com', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          toast({
+            title: t('contact.success'),
+            description: t('contact.successMessage'),
+          });
+          
+          // Reset form
+          setFormData({
+            name: '',
+            email: '',
+            subject: '',
+            message: '',
+          });
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (error) {
+        // Simplified for demo - in real app, we would have proper error handling
+        console.error('Error sending email:', error);
+        toast({
+          title: t('contact.error'),
+          description: t('contact.errorMessage'),
+          variant: 'destructive',
+        });
+      }
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors: Partial<Record<keyof FormData, string>> = {};
@@ -82,8 +111,8 @@ const Contact: React.FC = () => {
     <section id="contact" className="py-20 bg-secondary/30 dark:bg-muted/10">
       <div className="container mx-auto px-4">
         <div className="section-title">
-          <h2>Get In Touch</h2>
-          <p className="max-w-2xl mx-auto">Have a project in mind? Let's talk about it.</p>
+          <h2>{t('contact.title')}</h2>
+          <p className="max-w-2xl mx-auto">{t('contact.subtitle')}</p>
         </div>
         
         <div className="max-w-3xl mx-auto">
@@ -91,14 +120,15 @@ const Contact: React.FC = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Your Name</Label>
+                  <Label htmlFor="name">{t('contact.name')}</Label>
                   <Input
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="John Doe"
+                    placeholder={t('contact.namePlaceholder')}
                     className={errors.name ? "border-destructive" : ""}
+                    dir={isRtl ? "rtl" : "ltr"}
                   />
                   {errors.name && (
                     <p className="text-sm text-destructive">{errors.name}</p>
@@ -106,15 +136,16 @@ const Contact: React.FC = () => {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Your Email</Label>
+                  <Label htmlFor="email">{t('contact.email')}</Label>
                   <Input
                     id="email"
                     name="email"
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="john@example.com"
+                    placeholder={t('contact.emailPlaceholder')}
                     className={errors.email ? "border-destructive" : ""}
+                    dir="ltr"
                   />
                   {errors.email && (
                     <p className="text-sm text-destructive">{errors.email}</p>
@@ -123,14 +154,15 @@ const Contact: React.FC = () => {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="subject">Subject</Label>
+                <Label htmlFor="subject">{t('contact.subject')}</Label>
                 <Input
                   id="subject"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  placeholder="Project Inquiry"
+                  placeholder={t('contact.subjectPlaceholder')}
                   className={errors.subject ? "border-destructive" : ""}
+                  dir={isRtl ? "rtl" : "ltr"}
                 />
                 {errors.subject && (
                   <p className="text-sm text-destructive">{errors.subject}</p>
@@ -138,15 +170,16 @@ const Contact: React.FC = () => {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
+                <Label htmlFor="message">{t('contact.message')}</Label>
                 <Textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell me about your project..."
+                  placeholder={t('contact.messagePlaceholder')}
                   rows={5}
                   className={errors.message ? "border-destructive" : ""}
+                  dir={isRtl ? "rtl" : "ltr"}
                 />
                 {errors.message && (
                   <p className="text-sm text-destructive">{errors.message}</p>
@@ -159,7 +192,7 @@ const Contact: React.FC = () => {
                 className="w-full" 
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting ? t('contact.sending') : t('contact.send')}
               </Button>
             </form>
           </div>

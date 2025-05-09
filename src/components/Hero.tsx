@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,13 +9,104 @@ import aboutData from '@/data/about.json';
 const Hero: React.FC = () => {
   const { t, language } = useLanguage();
   const isRtl = language === 'ar';
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  // Animated background with particles
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    let particles: Particle[] = [];
+    
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initParticles();
+    };
+
+    class Particle {
+      x: number;
+      y: number;
+      size: number;
+      speedX: number;
+      speedY: number;
+      color: string;
+
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 5 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+        
+        // Soft colors that blend with theme
+        const hue = Math.floor(Math.random() * 60) + 170; // Soft blues/greens
+        this.color = `hsla(${hue}, 70%, 60%, 0.1)`;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        // Bounce off edges
+        if (this.x > canvas.width || this.x < 0) {
+          this.speedX *= -1;
+        }
+        if (this.y > canvas.height || this.y < 0) {
+          this.speedY *= -1;
+        }
+      }
+
+      draw() {
+        if (!ctx) return;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    const initParticles = () => {
+      particles = [];
+      const particleCount = Math.min(window.innerWidth / 10, 50); // Responsive number of particles
+      
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    };
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+      
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    animate();
+
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Background Blobs */}
-      <div className="absolute blob top-1/4 -left-48 w-96 h-96 bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-      <div className="absolute blob top-1/2 -right-48 w-96 h-96 bg-secondary/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-      <div className="absolute blob -bottom-8 left-20 w-80 h-80 bg-primary/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+      {/* Animated Background Canvas */}
+      <canvas 
+        ref={canvasRef} 
+        className="absolute inset-0 w-full h-full -z-10"
+      />
       
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
         <div className={`md:w-1/2 mb-12 md:mb-0 text-center ${isRtl ? 'md:text-right' : 'md:text-left'}`}>
@@ -23,7 +114,7 @@ const Hero: React.FC = () => {
             <span className="block text-lg md:text-xl font-medium text-muted-foreground mb-2">
               {t('hero.hello')}
             </span>
-            <span className="block font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald to-primary pb-2">
+            <span className="block font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald to-primary pb-2 text-3xl md:text-5xl">
               <Typewriter
                 words={[aboutData.name]}
                 loop={1}
@@ -38,7 +129,7 @@ const Hero: React.FC = () => {
           
           <h2 className="text-xl md:text-2xl mb-6 text-muted-foreground">
             <Typewriter
-              words={["Full Stack Developer", "Creative Designer"]}
+              words={[t('hero.title').split('&')[0], t('hero.title').split('&')[1]]}
               loop={0}
               cursor
               cursorStyle="|"
