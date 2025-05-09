@@ -40,5 +40,11 @@
   "contact.subtitle": "Let's work together",
 
   "footer.rights": "All rights reserved",
-  "footer.madeWith": "Made with"
+  "footer.madeWith": "Made with",
+  
+  "settings.title": "Settings",
+  "settings.language": "Language",
+  "settings.colors": "Colors",
+  "settings.selectLanguage": "Select Language",
+  "settings.colorTheme": "Color Theme"
 }

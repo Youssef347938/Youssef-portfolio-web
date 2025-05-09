@@ -34,6 +34,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     
     // Update HTML dir attribute for RTL support
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = language;
     
     // Store language preference
     localStorage.setItem('language', language);

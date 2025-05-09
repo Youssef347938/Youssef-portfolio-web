@@ -21,7 +21,7 @@ import {
 
 const Settings: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   const { currentPalette, palettes, setCurrentPalette } = useColor();
 
   return (
@@ -39,7 +39,7 @@ const Settings: React.FC = () => {
       <SheetContent className="w-[300px] sm:w-[400px]">
         <SheetHeader className="mb-6">
           <SheetTitle className="flex justify-between items-center">
-            Settings
+            {t('settings.title')}
             <SheetClose asChild>
               <Button variant="ghost" size="icon">
                 <X className="h-4 w-4" />
@@ -52,17 +52,17 @@ const Settings: React.FC = () => {
           <TabsList className="grid grid-cols-2 mb-6">
             <TabsTrigger value="language" className="flex gap-2 items-center">
               <Globe className="h-4 w-4" />
-              Language
+              {t('settings.language')}
             </TabsTrigger>
             <TabsTrigger value="colors" className="flex gap-2 items-center">
               <Palette className="h-4 w-4" />
-              Colors
+              {t('settings.colors')}
             </TabsTrigger>
           </TabsList>
           
           <TabsContent value="language">
             <div className="flex flex-col gap-4">
-              <h3 className="text-lg font-medium">Select Language</h3>
+              <h3 className="text-lg font-medium">{t('settings.selectLanguage')}</h3>
               <div className="grid grid-cols-2 gap-3">
                 <Button 
                   variant={language === 'en' ? 'default' : 'outline'}
@@ -84,7 +84,7 @@ const Settings: React.FC = () => {
           
           <TabsContent value="colors">
             <div className="flex flex-col gap-4">
-              <h3 className="text-lg font-medium">Color Theme</h3>
+              <h3 className="text-lg font-medium">{t('settings.colorTheme')}</h3>
               <div className="grid grid-cols-3 gap-3">
                 {palettes.map((palette) => (
                   <Button

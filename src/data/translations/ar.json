@@ -40,5 +40,11 @@
   "contact.subtitle": "لنعمل معًا",
 
   "footer.rights": "جميع الحقوق محفوظة",
-  "footer.madeWith": "صنع بواسطة"
+  "footer.madeWith": "صنع بواسطة",
+  
+  "settings.title": "الإعدادات",
+  "settings.language": "اللغة",
+  "settings.colors": "الألوان",
+  "settings.selectLanguage": "اختر اللغة",
+  "settings.colorTheme": "سمة الألوان"
 }
