@@ -41,6 +41,10 @@
 
   "footer.rights": "All rights reserved",
   "footer.madeWith": "Made with",
+  "footer.linkedin": "LinkedIn",
+  "footer.github": "GitHub",
+  "footer.youtube": "YouTube",
+  "footer.instagram": "Instagram",
   
   "settings.title": "Settings",
   "settings.language": "Language",

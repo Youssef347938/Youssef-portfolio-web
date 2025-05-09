@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 type ColorPalette = {
@@ -10,9 +9,6 @@ const defaultPalettes: ColorPalette[] = [
   { primary: '#10b981', name: 'Emerald' },
   { primary: '#3b82f6', name: 'Blue' },
   { primary: '#8b5cf6', name: 'Purple' },
-  { primary: '#ec4899', name: 'Pink' },
-  { primary: '#f97316', name: 'Orange' },
-  { primary: '#ef4444', name: 'Red' },
 ];
 
 interface ColorContextType {

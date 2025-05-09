@@ -38,8 +38,8 @@ const Hero: React.FC = () => {
           
           <h2 className="text-xl md:text-2xl mb-6 text-muted-foreground">
             <Typewriter
-              words={[t('hero.title')]}
-              loop={1}
+              words={["Full Stack Developer", "Creative Designer"]}
+              loop={0}
               cursor
               cursorStyle="|"
               typeSpeed={70}
