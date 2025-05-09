@@ -1,0 +1,53 @@
+
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Senior Full Stack Developer",
+      "organization": "Tech Innovate Inc.",
+      "date": "2021 - Present",
+      "description": "Lead development of enterprise-level web applications, manage team of junior developers, and implement CI/CD pipelines for streamlined deployment.",
+      "type": "work"
+    },
+    {
+      "id": 2,
+      "title": "UI/UX Designer & Frontend Developer",
+      "organization": "Creative Solutions Agency",
+      "date": "2018 - 2021",
+      "description": "Designed and implemented user interfaces for various clients, created design systems, and developed responsive frontend components using React and Vue.js.",
+      "type": "work"
+    },
+    {
+      "id": 3,
+      "title": "Master's in Computer Science",
+      "organization": "University of Technology",
+      "date": "2016 - 2018",
+      "description": "Specialized in Human-Computer Interaction and Web Technologies. Thesis on 'Responsive Design Patterns for Improved User Experience'.",
+      "type": "education"
+    },
+    {
+      "id": 4,
+      "title": "Junior Web Developer",
+      "organization": "Digital Minds Studio",
+      "date": "2015 - 2018",
+      "description": "Developed and maintained websites for small to medium businesses, implemented e-commerce solutions, and created custom WordPress themes.",
+      "type": "work"
+    },
+    {
+      "id": 5,
+      "title": "Bachelor's in Graphic Design",
+      "organization": "Art & Design Academy",
+      "date": "2011 - 2015",
+      "description": "Studied visual communication, typography, and digital design. Graduated with honors and received award for outstanding portfolio.",
+      "type": "education"
+    },
+    {
+      "id": 6,
+      "title": "Freelance Designer",
+      "organization": "Self-Employed",
+      "date": "2013 - 2015",
+      "description": "Created branding packages, marketing materials, and web designs for local businesses while completing undergraduate studies.",
+      "type": "work"
+    }
+  ]
+}

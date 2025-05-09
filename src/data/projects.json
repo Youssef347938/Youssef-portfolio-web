@@ -1,0 +1,65 @@
+
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "E-Commerce Platform",
+      "category": "Web",
+      "description": "A fully functional e-commerce platform with product listings, shopping cart, user authentication, and payment integration.",
+      "image": "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=764&auto=format&fit=crop",
+      "technologies": ["React", "Node.js", "MongoDB", "Express", "Stripe"],
+      "demoUrl": "https://demo.youssefkhalaf.com/ecommerce",
+      "githubUrl": "https://github.com/youssefkhalaf/ecommerce"
+    },
+    {
+      "id": 2,
+      "title": "Portfolio Website Builder",
+      "category": "Web",
+      "description": "A drag-and-drop website builder focused on creating professional portfolios with customizable templates.",
+      "image": "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=769&auto=format&fit=crop",
+      "technologies": ["Vue.js", "Vuex", "Firebase", "Tailwind CSS"],
+      "demoUrl": "https://demo.youssefkhalaf.com/builder",
+      "githubUrl": "https://github.com/youssefkhalaf/portfolio-builder"
+    },
+    {
+      "id": 3,
+      "title": "Health Tracker App",
+      "category": "App",
+      "description": "Mobile app for tracking fitness goals, nutrition, and overall health metrics with personalized recommendations.",
+      "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=870&auto=format&fit=crop",
+      "technologies": ["React Native", "Redux", "Node.js", "MongoDB"],
+      "demoUrl": "https://demo.youssefkhalaf.com/health",
+      "githubUrl": "https://github.com/youssefkhalaf/health-tracker"
+    },
+    {
+      "id": 4,
+      "title": "Corporate Branding Package",
+      "category": "Design",
+      "description": "Complete branding package including logo design, typography, color palette, and brand guidelines.",
+      "image": "https://images.unsplash.com/photo-1606761568499-6d2451b23c66?q=80&w=774&auto=format&fit=crop",
+      "technologies": ["Illustrator", "Photoshop", "InDesign"],
+      "demoUrl": "https://behance.net/youssefkhalaf/corporate-branding",
+      "githubUrl": null
+    },
+    {
+      "id": 5,
+      "title": "Real-time Chat Application",
+      "category": "Web",
+      "description": "Real-time messaging platform with features like user authentication, group chats, and file sharing.",
+      "image": "https://images.unsplash.com/photo-1611606063065-ee7946f0787a?q=80&w=774&auto=format&fit=crop",
+      "technologies": ["React", "Socket.io", "Express", "MongoDB"],
+      "demoUrl": "https://demo.youssefkhalaf.com/chat",
+      "githubUrl": "https://github.com/youssefkhalaf/chat-app"
+    },
+    {
+      "id": 6,
+      "title": "Product Packaging Design",
+      "category": "Design",
+      "description": "Custom packaging design for an eco-friendly skincare brand with a focus on sustainability.",
+      "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?q=80&w=830&auto=format&fit=crop",
+      "technologies": ["Photoshop", "Illustrator", "Blender"],
+      "demoUrl": "https://behance.net/youssefkhalaf/packaging",
+      "githubUrl": null
+    }
+  ]
+}
