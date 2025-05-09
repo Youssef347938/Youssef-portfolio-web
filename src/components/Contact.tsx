@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
@@ -7,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useLanguage } from '@/contexts/LanguageContext';
+import emailjs from 'emailjs-com';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -45,53 +45,36 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     try {
       // Validate form data
       formSchema.parse(formData);
       setErrors({});
       setIsSubmitting(true);
-      
-      // Send the email using EmailJS or similar service
-      const formElement = e.target as HTMLFormElement;
-      const formData = new FormData(formElement);
-      formData.append('recipient', 'joelomda583@gmail.com');
-      
-      // Example using fetch to a serverless function or email service
-      try {
-        const response = await fetch('https://formspree.io/f/joelomda583@gmail.com', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        
-        if (response.ok) {
-          toast({
-            title: t('contact.success'),
-            description: t('contact.successMessage'),
-          });
-          
-          // Reset form
-          setFormData({
-            name: '',
-            email: '',
-            subject: '',
-            message: '',
-          });
-        } else {
-          throw new Error('Server error');
-        }
-      } catch (error) {
-        // Simplified for demo - in real app, we would have proper error handling
-        console.error('Error sending email:', error);
-        toast({
-          title: t('contact.error'),
-          description: t('contact.errorMessage'),
-          variant: 'destructive',
-        });
-      }
+
+      // Send the email using EmailJS
+      await emailjs.send(
+        'service_c4ldi0c',
+        'template_6f4hbpk',
+        {
+          user_name: formData.name,
+          user_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        '45YXo9D079lKco2J5'
+      );
+
+      toast({
+        title: t('contact.success'),
+        description: t('contact.successMessage'),
+      });
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors: Partial<Record<keyof FormData, string>> = {};
@@ -101,6 +84,12 @@ const Contact: React.FC = () => {
           }
         });
         setErrors(fieldErrors);
+      } else {
+        toast({
+          title: t('contact.error'),
+          description: t('contact.errorMessage'),
+          variant: 'destructive',
+        });
       }
     } finally {
       setIsSubmitting(false);
@@ -108,7 +97,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-secondary/30 dark:bg-muted/10">
+    <section id="contact" className="relative py-20">
       <div className="container mx-auto px-4">
         <div className="section-title">
           <h2>{t('contact.title')}</h2>

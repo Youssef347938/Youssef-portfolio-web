@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,6 +8,8 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ColorProvider } from "@/contexts/ColorContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import ParticlesBackground from './components/ParticlesBackground';
+import ClassicParticlesBackground from '@/components/ui/classic-particles-background';
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
           <TooltipProvider>
             <Toaster />
             <Sonner />
+            <ClassicParticlesBackground />
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Index />} />

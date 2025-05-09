@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -46,7 +45,7 @@ const Projects: React.FC = () => {
   const isRtl = language === 'ar';
 
   return (
-    <section id="projects" className="py-20 bg-secondary/30 dark:bg-muted/10">
+    <section id="projects" className="relative py-20">
       <div className="container mx-auto px-4">
         <div className="section-title">
           <h2>{t('projects.title')}</h2>
@@ -76,7 +75,7 @@ const Projects: React.FC = () => {
             <div 
               key={project.id} 
               id={`project-${project.id}`}
-              className={`project-card rounded-xl overflow-hidden shadow-lg bg-card
+              className={`project-card rounded-xl overflow-hidden shadow-lg bg-white/20 dark:bg-white/10 backdrop-blur-sm border border-white/30 dark:border-white/10
                 ${visibleItems.includes(project.id) ? 'animate-fade-in' : 'opacity-0'}
               `}
             >

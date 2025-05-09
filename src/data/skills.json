@@ -1,57 +1,57 @@
-
 {
   "categories": [
     {
       "name": "Frontend",
       "skills": [
-        { "name": "HTML", "level": 95 },
-        { "name": "CSS", "level": 90 },
-        { "name": "JavaScript", "level": 85 },
-        { "name": "React", "level": 90 },
-        { "name": "Vue.js", "level": 75 },
-        { "name": "Tailwind CSS", "level": 85 },
-        { "name": "Responsive Design", "level": 90 }
+        { "name": "HTML", "level": 95, "icon": "FaHtml5" },
+        { "name": "CSS", "level": 90, "icon": "FaCss3Alt" },
+        { "name": "JavaScript", "level": 85, "icon": "FaJs" },
+        { "name": "React", "level": 90, "icon": "FaReact" },
+        { "name": "Vue.js", "level": 75, "icon": "FaVuejs" },
+        { "name": "Tailwind CSS", "level": 85, "icon": "SiTailwindcss" },
+        { "name": "Responsive Design", "level": 90, "icon": "MdDevices" }
       ]
     },
     {
       "name": "Backend",
       "skills": [
-        { "name": "Node.js", "level": 80 },
-        { "name": "PHP", "level": 70 },
-        { "name": "MySQL", "level": 75 },
-        { "name": "MongoDB", "level": 80 },
-        { "name": "Express.js", "level": 85 },
-        { "name": "RESTful APIs", "level": 85 }
+        { "name": "Node.js", "level": 80, "icon": "FaNodeJs" },
+        { "name": "PHP", "level": 70, "icon": "FaPhp" },
+        { "name": "MySQL", "level": 75, "icon": "GrMysql" },
+        { "name": "MongoDB", "level": 80, "icon": "SiMongodb" },
+        { "name": "Express.js", "level": 85, "icon": "SiExpress" },
+        { "name": "RESTful APIs", "level": 85, "icon": "BiLinkExternal" }
       ]
     },
     {
       "name": "Design",
       "skills": [
-        { "name": "Figma", "level": 90 },
-        { "name": "Photoshop", "level": 85 },
-        { "name": "Illustrator", "level": 80 },
-        { "name": "UI/UX Design", "level": 85 },
-        { "name": "Branding", "level": 80 }
+        { "name": "Figma", "level": 90, "icon": "FaFigma" },
+        { "name": "Photoshop", "level": 85, "icon": "FaAdobe" },
+        { "name": "Illustrator", "level": 80, "icon": "FaAdobe" },
+        { "name": "UI/UX Design", "level": 85, "icon": "MdDesignServices" },
+        { "name": "Branding", "level": 80, "icon": "FaTrademark" }
       ]
     },
     {
       "name": "Tools",
       "skills": [
-        { "name": "Git", "level": 85 },
-        { "name": "GitHub", "level": 90 },
-        { "name": "VS Code", "level": 95 },
-        { "name": "AWS", "level": 70 },
-        { "name": "Docker", "level": 65 }
+        { "name": "Git", "level": 85, "icon": "FaGitAlt" },
+        { "name": "GitHub", "level": 90, "icon": "FaGithub" },
+        { "name": "VS Code", "level": 95, "icon": "FaCode" },
+        { "name": "AWS", "level": 70, "icon": "FaAws" },
+        { "name": "Docker", "level": 65, "icon": "FaDocker" }
       ]
     },
     {
       "name": "Other",
       "skills": [
-        { "name": "Graphic Design", "level": 80 },
-        { "name": "Video Editing", "level": 75 },
-        { "name": "Ethical Hacking", "level": 65 },
-        { "name": "Motion Graphics", "level": 70 },
-        { "name": "Branding and Logo Design", "level": 85 }
+        { "name": "Graphic Design", "level": 80, "icon": "MdBrush" },
+        { "name": "Video Editing", "level": 75, "icon": "MdVideoLibrary" },
+        { "name": "Ethical Hacking", "level": 65, "icon": "GiSpy" },
+        { "name": "Motion Graphics", "level": 70, "icon": "MdAnimation" },
+        { "name": "Branding and Logo Design", "level": 85, "icon": "FaTrademark" },
+        { "name": "Game Developer", "level": 70, "icon": "FaGamepad" }
       ]
     }
   ]

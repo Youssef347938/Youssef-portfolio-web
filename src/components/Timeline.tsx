@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Calendar, BookOpen } from 'lucide-react';
 import timelineData from '@/data/timeline.json';
@@ -15,7 +14,7 @@ const Timeline: React.FC = () => {
         <div className="max-w-5xl mx-auto timeline-container">
           {timelineData.events.map((event) => (
             <div key={event.id} className="timeline-item animate-fade-in">
-              <div className="bg-card shadow-md rounded-lg p-6 relative">
+              <div className="bg-white/20 dark:bg-white/10 backdrop-blur-sm border border-white/30 dark:border-white/10 shadow-md rounded-lg p-6 relative">
                 <div className="absolute top-6 left-0 transform -translate-x-1/2 bg-primary text-primary-foreground rounded-full p-2 md:left-1/2">
                   {event.type === 'work' ? (
                     <Calendar className="h-5 w-5" />

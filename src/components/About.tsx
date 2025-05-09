@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MapPin, Phone, Mail, Calendar } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import aboutData from '@/data/about.json';
@@ -7,9 +6,14 @@ import aboutData from '@/data/about.json';
 const About: React.FC = () => {
   const { t, language } = useLanguage();
   const isRtl = language === 'ar';
-  
+
+  // Trigger re-render when language changes
+  useEffect(() => {
+    // You can add any side effects here if needed (like tracking language change)
+  }, [language]); // Dependency on language ensures this runs when the language changes
+
   return (
-    <section id="about" className="py-20 bg-secondary/30 dark:bg-muted/10">
+    <section id="about" className="relative py-20">
       <div className="container mx-auto px-4">
         <div className="section-title">
           <h2>{t('about.title')}</h2>
@@ -21,7 +25,7 @@ const About: React.FC = () => {
             <div className={`md:col-span-2 animate-on-scroll ${isRtl ? 'md:order-2' : ''}`}>
               <h3 className="text-xl font-bold mb-4">{t('about.whoami')}</h3>
               <p className="mb-6 text-muted-foreground">
-                {aboutData.description}
+                {language === 'ar' ? aboutData.description_ar : aboutData.description}
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">

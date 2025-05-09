@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import enTranslations from '@/data/translations/en.json';
 import arTranslations from '@/data/translations/ar.json';
@@ -46,6 +45,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const setLanguage = (newLanguage: Language) => {
     setLanguageState(newLanguage);
+    // Force a page refresh when language changes
+    window.location.reload();
   };
 
   const t = (key: string): string => {

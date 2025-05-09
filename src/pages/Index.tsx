@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -13,23 +12,34 @@ import Settings from '@/components/Settings';
 
 const Index: React.FC = () => {
   useEffect(() => {
-    // Handle smooth scrolling for anchor links
+    // Handle smooth scrolling for anchor links and buttons
     const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLAnchorElement;
-      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
-        e.preventDefault();
-        const id = target.getAttribute('href')?.substring(1);
-        const element = document.getElementById(id || '');
-        if (element) {
-          // Enhanced smooth scroll with better easing
-          const yOffset = -80; // Adjust this value based on your fixed header height
-          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          
-          window.scrollTo({
-            top: y,
-            behavior: 'smooth'
-          });
+      let target = e.target as HTMLElement;
+      // Traverse up to find <a> or <button data-scroll-to>
+      while (target && target !== document.body) {
+        if (target.tagName === 'A' && (target as HTMLAnchorElement).getAttribute('href')?.startsWith('#')) {
+          e.preventDefault();
+          const id = (target as HTMLAnchorElement).getAttribute('href')?.substring(1);
+          const element = document.getElementById(id || '');
+          if (element) {
+            const yOffset = -80; // Adjust for navbar height
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+          break;
         }
+        if (target.tagName === 'BUTTON' && target.hasAttribute('data-scroll-to')) {
+          e.preventDefault();
+          const id = target.getAttribute('data-scroll-to');
+          const element = document.getElementById(id || '');
+          if (element) {
+            const yOffset = -80;
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+          break;
+        }
+        target = target.parentElement as HTMLElement;
       }
     };
 

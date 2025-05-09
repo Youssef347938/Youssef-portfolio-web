@@ -1,65 +1,70 @@
-
 {
   "projects": [
     {
       "id": 1,
-      "title": "E-Commerce Platform",
+      "title": "Landing Page for OnceWear Brand",
+      "description": "A stylish landing page to showcase your t-shirts, brand story, customer reviews, and an order button.",
+      "technologies": ["HTML", "CSS", "JavaScript"],
+      "image": "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80",
       "category": "Web",
-      "description": "A fully functional e-commerce platform with product listings, shopping cart, user authentication, and payment integration.",
-      "image": "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=764&auto=format&fit=crop",
-      "technologies": ["React", "Node.js", "MongoDB", "Express", "Stripe"],
-      "demoUrl": "https://demo.youssefkhalaf.com/ecommerce",
-      "githubUrl": "https://github.com/youssefkhalaf/ecommerce"
+      "demoUrl": "#",
+      "githubUrl": "#",
+      "features": ["Responsive design", "Dark Mode toggle"]
     },
     {
       "id": 2,
-      "title": "Portfolio Website Builder",
-      "category": "Web",
-      "description": "A drag-and-drop website builder focused on creating professional portfolios with customizable templates.",
-      "image": "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=769&auto=format&fit=crop",
-      "technologies": ["Vue.js", "Vuex", "Firebase", "Tailwind CSS"],
-      "demoUrl": "https://demo.youssefkhalaf.com/builder",
-      "githubUrl": "https://github.com/youssefkhalaf/portfolio-builder"
+      "title": "T-Shirt Order App",
+      "description": "An app where users choose t-shirt type, color, front/back print, and it automatically calculates the price.",
+      "technologies": ["Kotlin", "Flutter", "Kodular"],
+      "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80",
+      "category": "App",
+      "demoUrl": "#",
+      "githubUrl": "#",
+      "features": ["Language switch (Arabic/English)", "Light & Dark mode", "Order list"]
     },
     {
       "id": 3,
-      "title": "Health Tracker App",
-      "category": "App",
-      "description": "Mobile app for tracking fitness goals, nutrition, and overall health metrics with personalized recommendations.",
-      "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=870&auto=format&fit=crop",
-      "technologies": ["React Native", "Redux", "Node.js", "MongoDB"],
-      "demoUrl": "https://demo.youssefkhalaf.com/health",
-      "githubUrl": "https://github.com/youssefkhalaf/health-tracker"
+      "title": "OnceWear Brand Guide",
+      "description": "A visual PDF or presentation that includes your brand's logo, color palette, fonts, mockups, and style rules.",
+      "technologies": ["Photoshop", "Illustrator", "Canva"],
+      "image": "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
+      "category": "Design",
+      "demoUrl": "#",
+      "githubUrl": "#",
+      "features": ["Useful for marketing, social media, or printing partners"]
     },
     {
       "id": 4,
-      "title": "Corporate Branding Package",
-      "category": "Design",
-      "description": "Complete branding package including logo design, typography, color palette, and brand guidelines.",
-      "image": "https://images.unsplash.com/photo-1606761568499-6d2451b23c66?q=80&w=774&auto=format&fit=crop",
-      "technologies": ["Illustrator", "Photoshop", "InDesign"],
-      "demoUrl": "https://behance.net/youssefkhalaf/corporate-branding",
-      "githubUrl": null
+      "title": "Orders Dashboard for OnceWear",
+      "description": "An admin dashboard to manage and view customer orders, calculate profits, and check most popular designs.",
+      "technologies": ["React", "Vue.js", "Firebase", "Node.js"],
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+      "category": "Web",
+      "demoUrl": "#",
+      "githubUrl": "#",
+      "features": ["Order tracking", "Stats charts", "Filter by date or type"]
     },
     {
       "id": 5,
-      "title": "Real-time Chat Application",
-      "category": "Web",
-      "description": "Real-time messaging platform with features like user authentication, group chats, and file sharing.",
-      "image": "https://images.unsplash.com/photo-1611606063065-ee7946f0787a?q=80&w=774&auto=format&fit=crop",
-      "technologies": ["React", "Socket.io", "Express", "MongoDB"],
-      "demoUrl": "https://demo.youssefkhalaf.com/chat",
-      "githubUrl": "https://github.com/youssefkhalaf/chat-app"
+      "title": "Social Media Kit",
+      "description": "A full set of post templates for Instagram, Facebook, and TikTok for your t-shirt brand or freelance work.",
+      "technologies": ["Canva", "Photoshop"],
+      "image": "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
+      "category": "Design",
+      "demoUrl": "#",
+      "githubUrl": "#",
+      "features": ["Include versions in both Arabic and English"]
     },
     {
       "id": 6,
-      "title": "Product Packaging Design",
-      "category": "Design",
-      "description": "Custom packaging design for an eco-friendly skincare brand with a focus on sustainability.",
-      "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?q=80&w=830&auto=format&fit=crop",
-      "technologies": ["Photoshop", "Illustrator", "Blender"],
-      "demoUrl": "https://behance.net/youssefkhalaf/packaging",
-      "githubUrl": null
+      "title": "Personal Portfolio App",
+      "description": "A mobile app that introduces you, shows your skills, projects, contact info, and links to your social media.",
+      "technologies": ["Flutter", "Kodular"],
+      "image": "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg",
+      "category": "App",
+      "demoUrl": "#",
+      "githubUrl": "#",
+      "features": ["Share with clients or as a QR code on your business card"]
     }
   ]
 }

@@ -17,25 +17,25 @@ const Footer: React.FC = () => {
   const socialLinks = [
     { 
       name: 'linkedin', 
-      url: 'https://linkedin.com', 
+      url: 'https://www.linkedin.com/in/jo-elomda-aaa59b24a/', 
       Icon: Linkedin, 
       label: t('footer.linkedin')
     },
     { 
       name: 'github', 
-      url: 'https://github.com', 
+      url: 'https://github.com/Youssef347938', 
       Icon: Github, 
       label: t('footer.github')
     },
     { 
       name: 'youtube', 
-      url: 'https://youtube.com', 
+      url: 'https://www.youtube.com/@Youssef_Khalaf1', 
       Icon: Youtube, 
       label: t('footer.youtube')
     },
     { 
       name: 'instagram', 
-      url: 'https://instagram.com', 
+      url: 'https://www.instagram.com/jo_elomda/', 
       Icon: Instagram, 
       label: t('footer.instagram')
     }
