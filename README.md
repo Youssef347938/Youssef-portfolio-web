@@ -54,23 +54,6 @@ npm run dev
 npm run build
 ```
 
----
-
-## 📬 Contact
-
-Feel free to reach out via:
-
-* Email: [youssef@example.com](mailto:youssef@example.com) *(replace with your actual email)*
-* LinkedIn: [linkedin.com/in/youssef-khalaf](https://linkedin.com/in/your-profile)
-* Instagram: [@oncewear.eg](https://instagram.com/oncewear.eg)
-
----
-
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
----
 
 > Made with ❤️ by **Youssef Khalaf**
 
