@@ -1,0 +1,44 @@
+
+{
+  "nav.home": "الرئيسية",
+  "nav.about": "عني",
+  "nav.skills": "مهاراتي",
+  "nav.projects": "مشاريعي",
+  "nav.timeline": "مساري",
+  "nav.contact": "اتصل بي",
+
+  "hero.hello": "مرحبا، أنا",
+  "hero.title": "مطور ويب ومصمم إبداعي",
+  "hero.getInTouch": "تواصل معي",
+  "hero.seeMyWork": "شاهد أعمالي",
+  "hero.available": "متاح للعمل",
+
+  "about.title": "عني",
+  "about.subtitle": "تعرف علي أكثر",
+  "about.whoami": "من أنا؟",
+  "about.location": "الموقع",
+  "about.phone": "الهاتف",
+  "about.email": "البريد الإلكتروني",
+  "about.availability": "الإتاحة",
+
+  "skills.title": "مهاراتي",
+  "skills.subtitle": "التقنيات والأدوات التي أعمل بها",
+
+  "projects.title": "مشاريعي",
+  "projects.subtitle": "بعض أعمالي الحديثة",
+  "projects.all": "الكل",
+  "projects.web": "ويب",
+  "projects.app": "تطبيقات",
+  "projects.design": "تصميم",
+  "projects.liveDemo": "عرض حي",
+  "projects.sourceCode": "كود المصدر",
+
+  "timeline.title": "مساري",
+  "timeline.subtitle": "التعليم والخبرة المهنية",
+
+  "contact.title": "تواصل معي",
+  "contact.subtitle": "لنعمل معًا",
+
+  "footer.rights": "جميع الحقوق محفوظة",
+  "footer.madeWith": "صنع بواسطة"
+}

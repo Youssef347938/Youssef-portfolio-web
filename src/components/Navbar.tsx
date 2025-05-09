@@ -2,19 +2,21 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 
 const navLinks = [
-  { name: 'Home', href: '#hero' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Timeline', href: '#timeline' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'nav.home', href: '#hero' },
+  { name: 'nav.about', href: '#about' },
+  { name: 'nav.skills', href: '#skills' },
+  { name: 'nav.projects', href: '#projects' },
+  { name: 'nav.timeline', href: '#timeline' },
+  { name: 'nav.contact', href: '#contact' },
 ];
 
 const Navbar: React.FC = () => {
   const { isDarkMode, toggleTheme } = useTheme();
+  const { t, language } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -41,6 +43,8 @@ const Navbar: React.FC = () => {
     setMobileMenuOpen(false);
   };
 
+  const isRtl = language === 'ar';
+
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -60,9 +64,9 @@ const Navbar: React.FC = () => {
             <a
               key={link.name}
               href={link.href}
-              className="px-3 py-2 text-sm rounded-md transition hover:text-primary"
+              className={`px-3 py-2 text-sm rounded-md transition hover:text-primary ${isRtl ? 'ml-2' : 'mr-2'}`}
             >
-              {link.name}
+              {t(link.name)}
             </a>
           ))}
           <Button
@@ -112,7 +116,7 @@ const Navbar: React.FC = () => {
               className="text-xl font-medium hover:text-primary transition"
               onClick={handleNavLinkClick}
             >
-              {link.name}
+              {t(link.name)}
             </a>
           ))}
         </nav>

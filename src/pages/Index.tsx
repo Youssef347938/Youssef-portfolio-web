@@ -9,6 +9,7 @@ import Timeline from '@/components/Timeline';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
+import Settings from '@/components/Settings';
 
 const Index: React.FC = () => {
   useEffect(() => {
@@ -28,8 +29,29 @@ const Index: React.FC = () => {
       }
     };
 
+    // Add scroll animation
+    const handleScrollAnimation = () => {
+      const elements = document.querySelectorAll('.animate-on-scroll');
+      const windowHeight = window.innerHeight;
+      
+      elements.forEach((element) => {
+        const elementPosition = (element as HTMLElement).getBoundingClientRect().top;
+        if (elementPosition < windowHeight - 100) {
+          element.classList.add('visible');
+        }
+      });
+    };
+
+    // Initialize animations on load
+    handleScrollAnimation();
+
     document.addEventListener('click', handleAnchorClick);
-    return () => document.removeEventListener('click', handleAnchorClick);
+    window.addEventListener('scroll', handleScrollAnimation);
+    
+    return () => {
+      document.removeEventListener('click', handleAnchorClick);
+      window.removeEventListener('scroll', handleScrollAnimation);
+    };
   }, []);
 
   return (
@@ -43,6 +65,7 @@ const Index: React.FC = () => {
       <Contact />
       <Footer />
       <ScrollToTop />
+      <Settings />
     </div>
   );
 };

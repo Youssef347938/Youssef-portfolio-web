@@ -3,8 +3,13 @@ import React from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
+import aboutData from '@/data/about.json';
 
 const Hero: React.FC = () => {
+  const { t, language } = useLanguage();
+  const isRtl = language === 'ar';
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Background Blobs */}
@@ -13,14 +18,14 @@ const Hero: React.FC = () => {
       <div className="absolute blob -bottom-8 left-20 w-80 h-80 bg-primary/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
       
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
-        <div className="md:w-1/2 mb-12 md:mb-0 text-center md:text-left">
+        <div className={`md:w-1/2 mb-12 md:mb-0 text-center ${isRtl ? 'md:text-right' : 'md:text-left'}`}>
           <h1 className="mb-4 tracking-tight">
             <span className="block text-lg md:text-xl font-medium text-muted-foreground mb-2">
-              Hello, I'm
+              {t('hero.hello')}
             </span>
             <span className="block font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald to-primary pb-2">
               <Typewriter
-                words={['Youssef Khalaf']}
+                words={[aboutData.name]}
                 loop={1}
                 cursor
                 cursorStyle="|"
@@ -33,8 +38,8 @@ const Hero: React.FC = () => {
           
           <h2 className="text-xl md:text-2xl mb-6 text-muted-foreground">
             <Typewriter
-              words={['Full Stack Developer', 'Creative Designer']}
-              loop={0}
+              words={[t('hero.title')]}
+              loop={1}
               cursor
               cursorStyle="|"
               typeSpeed={70}
@@ -43,14 +48,23 @@ const Hero: React.FC = () => {
             />
           </h2>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <div className={`flex flex-col sm:flex-row gap-4 ${isRtl ? 'justify-center md:justify-end' : 'justify-center md:justify-start'}`}>
             <Button asChild size="lg">
               <a href="#contact">
-                Get in Touch <ArrowRight className="ml-2 h-4 w-4" />
+                {!isRtl && (
+                  <>
+                    {t('hero.getInTouch')} <ArrowRight className="ml-2 h-4 w-4" />
+                  </>
+                )}
+                {isRtl && (
+                  <>
+                    <ArrowRight className="mr-2 h-4 w-4 rotate-180" /> {t('hero.getInTouch')}
+                  </>
+                )}
               </a>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="#projects">See My Work</a>
+              <a href="#projects">{t('hero.seeMyWork')}</a>
             </Button>
           </div>
         </div>
@@ -67,7 +81,7 @@ const Hero: React.FC = () => {
             <div className="absolute -bottom-4 -right-4 bg-background rounded-lg py-2 px-4 shadow-lg">
               <p className="text-sm font-medium flex items-center">
                 <span className="h-2 w-2 rounded-full bg-green-500 mr-2"></span>
-                Available for hire
+                {t('hero.available')}
               </p>
             </div>
           </div>
